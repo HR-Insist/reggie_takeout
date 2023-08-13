@@ -1,0 +1,40 @@
+# Web服务
+server:
+  port: 8090
+# spring的配置
+spring:
+  datasource:  # 数据库
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/reggie
+    username: root
+    password: root
+  servlet:
+    multipart:
+      max-file-size: 1MB # 单个文件上传最大内存
+      max-request-size: 10MB  # 单次上传最大内存
+# mybatis配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 控制台输出日志，与@Slf4j配合
+    map-underscore-to-camel-case: true # 驼峰与下划线 互转；user_id <=>userId
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+
+
+# 阿里云OSS配置，公共读写情况写才行
+aliyun:
+  oss:
+    endpoint: https://oss-cn-chengdu.aliyuncs.com # 节点地址
+    accessKeyId: # 自己的OSS id
+    accessKeySecret: # 自己的OSS secret
+    bucketName: hrui-zym # bucket名字
+
+#  开启 事务管理 日志
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
+
+reggie:
+#  path: D:/Project/吉瑞外卖/backend/src/assets/food/
+  path: D:/Project/吉瑞外卖/foodImages/
